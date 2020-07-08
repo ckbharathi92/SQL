@@ -17,10 +17,10 @@
 
 -- Find the average differnece between the original salary and the mis-entered value
   
-select avg(avg_sal) - avg(cast(replace_sal as int)) as Blunder
+select avg(avg_sal) - avg(cast(replace_sal as int)) as Blunder -- used cast to match the avg_sal data type for calculating difference
 from (
 	   select  cast(salary as int) as avg_sal, 
-		       replace(cast(salary as varchar), '0', '') as replace_Sal  
+		       replace(cast(salary as varchar), '0', '') as replace_Sal  -- used cast for suiting the replace function
 	    from employee_Salary 
         group by salary 
     ) as B
